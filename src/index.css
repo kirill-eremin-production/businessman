@@ -1,3 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    --primary: #ffbe5c;
+    /*--primary-light: #e57373;*/
+    /*--secondary: #2196f3;*/
+    /*--secondary-dark: #1976d2;*/
+    /*--secondary-light: #64b5f6;*/
+    /*--background: #f5f5f5;*/
+    /*--background-dark: #e0e0e0;*/
+    /*--background-light: #fafafa;*/
+    /*--text: #212121;*/
+    /*--text-dark: #000000;*/
+    /*--text-light: #484848;*/
+}
+
+html,
+body,
+#root {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: Ubuntu, sans-serif;
+    font-size: 2.5vh;
+}
+
 body {
-  margin: 0;
+    margin: 0;
 }

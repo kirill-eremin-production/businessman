@@ -1,0 +1,28 @@
+.root {
+    width: 100%;
+    border: none;
+    font-family: Ubuntu, sans-serif;
+    cursor: pointer;
+    font-size: 2.5vh;
+    background-color: var(--primary);
+    padding: 1vw;
+    border-radius: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.root:active {
+    transform: scale(0.95);
+}
+
+.circle {
+    border-radius: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.m.circle {
+    width: 4vw;
+    height: 4vw;
+}

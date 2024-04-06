@@ -1,0 +1,30 @@
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1vw;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1vw;
+    border-radius: 1vw;
+    position: absolute;
+    bottom: 1vw;
+    right: 1vw;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.timeText {
+    font-size: 2vw;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.timeSpeedText {
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.icon {
+    width: 2vw;
+    height: 2vw;
+}

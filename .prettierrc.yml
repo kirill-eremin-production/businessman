@@ -1,0 +1,18 @@
+trailingComma: 'es5'
+tabWidth: 4
+semi: false
+singleQuote: true
+
+importOrder:
+    - '<THIRD_PARTY_MODULES>'
+    - 'shared'
+    - 'entities'
+    - 'features'
+    - 'widgets'
+    - 'pages'
+    - 'css'
+    - '^[./]'
+
+importOrderSeparation: true
+importOrderSortSpecifiers: true
+plugins: ['@trivago/prettier-plugin-sort-imports']

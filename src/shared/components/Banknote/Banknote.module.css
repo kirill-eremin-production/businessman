@@ -1,0 +1,40 @@
+.root {
+    width: 4.5vw;
+    height: 2vw;
+    border: none;
+    cursor: pointer;
+    background-position: center;
+    background-size: cover;
+}
+
+.root:active {
+    transform: scale(0.9);
+}
+
+.value1 {
+    background-image: url('./assets/1.png');
+}
+
+.value5 {
+    background-image: url('./assets/5.png');
+}
+
+.value10 {
+    background-image: url('./assets/10.png');
+}
+
+.value50 {
+    background-image: url('./assets/50.png');
+}
+
+.value100 {
+    background-image: url('./assets/100.png');
+}
+
+.value500 {
+    background-image: url('./assets/500.png');
+}
+
+.value1000 {
+    background-image: url('./assets/1000.png');
+}

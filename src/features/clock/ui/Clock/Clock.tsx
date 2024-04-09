@@ -1,4 +1,4 @@
-import { ChevronsLeft, ChevronsRight, Minus, Pause } from '@gravity-ui/icons'
+import { ChevronsLeft, ChevronsRight, Pause } from '@gravity-ui/icons'
 import { FC } from 'react'
 
 import { Button } from '../../../../shared/components/Button'
@@ -21,6 +21,8 @@ export const Clock: FC<ClockProps> = (props) => {
 
     return (
         <div className={styles.root}>
+
+
             <div className={styles.timeText}>{humanize(time)}</div>
 
             <Button isCircle onClick={onPauseButtonClick}>

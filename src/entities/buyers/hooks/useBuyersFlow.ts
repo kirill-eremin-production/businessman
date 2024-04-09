@@ -11,6 +11,11 @@ function getRandomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
+const mapIntToBanknote = [
+    1, 5, 5, 10, 10, 10, 50, 50, 50, 50, 100, 100, 100, 100, 100, 500, 500, 500,
+    1000, 1000,
+]
+
 export const useBuyersFlow = () => {
     const { supermarketState } = useSupermarket()
     const { addBuyer } = useBuyers()
@@ -29,15 +34,19 @@ export const useBuyersFlow = () => {
 
         const deltaTime = time - prevTime.current
 
-        const n = getRandomInt(0, 100) * (deltaTime / 15)
+        const n = getRandomInt(0, 100) * (deltaTime / 3)
         const shouldAddBuyer = n > 500
-        console.log('> shouldAddBuyer', { deltaTime, n, shouldAddBuyer })
 
         if (shouldAddBuyer) {
             prevTime.current = time
 
             const itemsPrice = getRandomInt(0, 1000)
-            const money = getRandomInt(itemsPrice, itemsPrice + 1000)
+
+            const randomBanknote =
+                mapIntToBanknote[getRandomInt(0, mapIntToBanknote.length - 1)]
+
+            const money =
+                (Math.floor(itemsPrice / randomBanknote) + 1) * randomBanknote
 
             addBuyer({
                 name: `Buyer ${time}`,

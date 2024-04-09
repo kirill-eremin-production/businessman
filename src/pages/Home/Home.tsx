@@ -1,3 +1,4 @@
+import { Background } from '../../shared/components/Background'
 import { Button } from '../../shared/components/Button'
 
 import { useTranslate } from '../../entities/language/atom.ts'
@@ -12,7 +13,7 @@ export const Home = () => {
 
     return (
         <div className={styles.root}>
-            <div className={styles.background} />
+            <Background image="homePage" />
 
             <div className={styles.content}>
                 <div className={styles.title}>

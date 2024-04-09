@@ -1,7 +1,12 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
+
+import { Background } from '../../shared/components/Background'
+import { Banknote } from '../../shared/components/Banknote'
+import { Price } from '../../shared/components/Price'
 
 import { useBuyers } from '../../entities/buyers'
-import { useMoney } from '../../entities/money'
+import { useTranslate } from '../../entities/language/atom.ts'
+import { Wallet, useMoney } from '../../entities/money'
 import { usePage } from '../../entities/page'
 
 import styles from './Cashier.module.css'
@@ -11,7 +16,8 @@ export type CashierProps = {}
 export const Cashier: FC<CashierProps> = (props) => {
     const { buyers, removeBuyer } = useBuyers()
     const { setPage } = usePage()
-    const { money, addMoney } = useMoney()
+    const translate = useTranslate()
+    const { addMoney } = useMoney()
 
     const [moneyForBuyer, setMoneyForBuyer] = useState<number[]>([])
 
@@ -33,29 +39,72 @@ export const Cashier: FC<CashierProps> = (props) => {
 
     const moneyForBuyerSum = moneyForBuyer.reduce((acc, curr) => acc + curr, 0)
 
+    useEffect(() => {
+        if (buyers.length === 0) {
+            setPage('supermarket')
+        }
+    }, [buyers.length])
+
+    useEffect(() => {
+        if (moneyForBuyerSum === deltaMoney) {
+            addMoney(buyer.itemsPrice)
+            removeBuyer(0)
+            setMoneyForBuyer([])
+        }
+    }, [moneyForBuyerSum])
+
     return (
         <div>
-            Cashier
-            <div>Your money {money}$</div>
+            <Background image="cashierPage" />
+            <Wallet />
             <button onClick={() => setPage('supermarket')}>Supermarket</button>
-            <pre>{JSON.stringify(buyer, null, 2)}</pre>
-            <div>Delta = {deltaMoney}</div>
             {buyer ? (
-                <div>
-                    <hr />
-                    <button onClick={() => addMoneyForBuyer(1)}>1$</button>
-                    <button onClick={() => addMoneyForBuyer(5)}>5$</button>
-                    <button onClick={() => addMoneyForBuyer(10)}>10$</button>
-                    <button onClick={() => addMoneyForBuyer(25)}>25$</button>
-                    <button onClick={() => addMoneyForBuyer(50)}>50$</button>
-                    <button onClick={() => addMoneyForBuyer(100)}>100$</button>
-                    <button onClick={() => addMoneyForBuyer(250)}>250$</button>
-                    <button onClick={() => addMoneyForBuyer(500)}>500$</button>
-                    <button onClick={() => addMoneyForBuyer(1000)}>
-                        1000$
-                    </button>
-                    <hr />
+                <div className={styles.content}>
+                    <div className={styles.description}>
+                        <div>
+                            {translate('itemsPrice')}:{' '}
+                            <Price price={buyer.itemsPrice} />
+                        </div>
+
+                        <div>
+                            {translate('buyersMoney')}:{' '}
+                            <Price price={buyer.money} />
+                        </div>
+                    </div>
+
+                    <div className={styles.banknotes}>
+                        <Banknote
+                            onClick={() => addMoneyForBuyer(1)}
+                            value={1}
+                        />
+                        <Banknote
+                            onClick={() => addMoneyForBuyer(5)}
+                            value={5}
+                        />
+                        <Banknote
+                            onClick={() => addMoneyForBuyer(10)}
+                            value={10}
+                        />
+                        <Banknote
+                            onClick={() => addMoneyForBuyer(50)}
+                            value={50}
+                        />
+                        <Banknote
+                            onClick={() => addMoneyForBuyer(100)}
+                            value={100}
+                        />
+                        <Banknote
+                            onClick={() => addMoneyForBuyer(500)}
+                            value={500}
+                        />
+                        <Banknote
+                            onClick={() => addMoneyForBuyer(1000)}
+                            value={1000}
+                        />
+                    </div>
+
                     <div
+                        className={styles.changeDescription}
                         style={{
                             color:
                                 moneyForBuyerSum === deltaMoney
@@ -63,28 +112,20 @@ export const Cashier: FC<CashierProps> = (props) => {
                                     : 'red',
                         }}
                     >
-                        {moneyForBuyerSum} / {deltaMoney}
+                        {translate('change')}:{' '}
+                        <Price price={moneyForBuyerSum} /> /{' '}
+                        <Price price={deltaMoney} />
                     </div>
-                    {moneyForBuyer.map((money, index) => (
-                        <button
-                            style={{ color: 'red' }}
-                            key={index}
-                            onClick={() => removeMoneyForBuyer(index)}
-                        >
-                            {money}
-                        </button>
-                    ))}
-                    {moneyForBuyerSum === deltaMoney ? (
-                        <button
-                            onClick={() => {
-                                addMoney(buyer.itemsPrice)
-                                removeBuyer(0)
-                                setMoneyForBuyer([])
-                            }}
-                        >
-                            Submit
-                        </button>
-                    ) : null}
+
+                    <div className={styles.banknotes}>
+                        {moneyForBuyer.map((money, index) => (
+                            <Banknote
+                                key={index}
+                                onClick={() => removeMoneyForBuyer(index)}
+                                value={money}
+                            />
+                        ))}
+                    </div>
                 </div>
             ) : null}
         </div>

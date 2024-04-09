@@ -1,0 +1,28 @@
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1vw;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1vw;
+    border-radius: 1vw;
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.icon {
+    width: 4vw;
+    height: 4vw;
+    background-image: url('./assets/wallet.png');
+    background-size: cover;
+}
+
+.text {
+    font-size: 2.5vw;
+    font-weight: bold;
+    white-space: nowrap;
+}

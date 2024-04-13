@@ -4,7 +4,6 @@ import { Background } from '../../shared/components/Background'
 
 import { Wallet } from '../../entities/money'
 import { usePage } from '../../entities/page'
-import { useTimer } from '../../entities/time'
 
 import { Clock } from '../../features/clock'
 
@@ -16,7 +15,6 @@ import { SupermarketButton } from './ui/SupermarketButton'
 export type MapProps = {}
 
 export const Map: FC<MapProps> = (props) => {
-    useTimer()
 
     const { setPage } = usePage()
 

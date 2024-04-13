@@ -4,7 +4,12 @@ import { FC } from 'react'
 import styles from './Background.module.css'
 
 export type BackgroundProps = {
-    image: 'homePage' | 'cityMapPage' | 'supermarketPage' | 'cashierPage'
+    image:
+        | 'homePage'
+        | 'cityMapPage'
+        | 'supermarketPage'
+        | 'cashierPage'
+        | 'bankPage'
 }
 
 export const Background: FC<BackgroundProps> = ({ image }) => {
@@ -15,6 +20,7 @@ export const Background: FC<BackgroundProps> = ({ image }) => {
                 [styles.homePage]: image === 'homePage',
                 [styles.supermarketPage]: image === 'supermarketPage',
                 [styles.cashierPage]: image === 'cashierPage',
+                [styles.bankPage]: image === 'bankPage',
             })}
         />
     )

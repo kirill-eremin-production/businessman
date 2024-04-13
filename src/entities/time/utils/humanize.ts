@@ -1,16 +1,19 @@
-const HOUR = 60
-const DAY = 24 * HOUR
+import { getDays, getHours, getMinutes } from './common'
 
-export function humanize(draftTime: number): string {
-    const time = draftTime + 8 * HOUR
+export function formatHours(hours: number): string {
+    return hours < 10 ? `0${hours}` : `${hours}`
+}
 
-    const days = Math.floor(time / DAY)
+export function formatMinutes(minutes: number): string {
+    return minutes < 10 ? `0${minutes}` : `${minutes}`
+}
 
-    const hours = Math.floor((time - DAY * days) / HOUR)
-    const hoursText = hours < 10 ? `0${hours}` : `${hours}`
+export function humanize(time: number): string {
+    const days = getDays(time)
 
-    const minutes = time - DAY * days - HOUR * hours
-    const minutesText = minutes < 10 ? `0${minutes}` : `${minutes}`
+    const hours = formatHours(getHours(time))
 
-    return `${days} days ${hoursText}:${minutesText}`
+    const minutes = formatMinutes(getMinutes(time))
+
+    return `${days} days ${hours}:${minutes}`
 }

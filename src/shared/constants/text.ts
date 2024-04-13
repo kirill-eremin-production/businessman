@@ -15,4 +15,8 @@ export const TEXT = {
         ru: 'Сдача',
         en: "Change",
     },
+    takeLoan: {
+        ru: 'Взять кредит',
+        en: 'Take a loan',
+    },
 }

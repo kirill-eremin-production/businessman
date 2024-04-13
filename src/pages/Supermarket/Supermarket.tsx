@@ -5,7 +5,6 @@ import { Background } from '../../shared/components/Background'
 import { useBuyers } from '../../entities/buyers'
 import { Wallet } from '../../entities/money'
 import { usePage } from '../../entities/page'
-import { useTimer } from '../../entities/time'
 
 import { Clock } from '../../features/clock'
 import { OpenButton } from '../../features/supermarket/close-open'
@@ -19,7 +18,6 @@ import { CashierButton } from './ui/CashierButton'
 export type SupermarketProps = {}
 
 export const Supermarket: FC<SupermarketProps> = (props) => {
-    useTimer()
 
     const { setPage } = usePage()
 

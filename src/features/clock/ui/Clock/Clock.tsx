@@ -3,13 +3,22 @@ import { FC } from 'react'
 
 import { Button } from '../../../../shared/components/Button'
 
-import { humanize, useTime, useTimeSpeed } from '../../../../entities/time'
+import { useCreditsFlow } from '../../../../entities/bank/hooks/useCreditsFlow.ts'
+import {
+    humanize,
+    useTime,
+    useTimeSpeed,
+    useTimer,
+} from '../../../../entities/time'
 
 import styles from './Clock.module.css'
 
 export type ClockProps = {}
 
 export const Clock: FC<ClockProps> = (props) => {
+    useTimer()
+    useCreditsFlow()
+
     const { time } = useTime()
     const { timeSpeed, setTimeSpeed } = useTimeSpeed()
 
@@ -21,8 +30,6 @@ export const Clock: FC<ClockProps> = (props) => {
 
     return (
         <div className={styles.root}>
-
-
             <div className={styles.timeText}>{humanize(time)}</div>
 
             <Button isCircle onClick={onPauseButtonClick}>

@@ -7,7 +7,7 @@ import { usePage } from '../../entities/page'
 import styles from './Home.module.css'
 
 export const Home = () => {
-    const t = useTranslate()
+    const translate = useTranslate()
 
     const { setPage } = usePage()
 
@@ -21,7 +21,23 @@ export const Home = () => {
                     <br />
                     SIMULATOR
                 </div>
-                <Button onClick={() => setPage('map')}>{t('play')}</Button>
+                <Button onClick={() => setPage('map')}>
+                    {translate('play')}
+                </Button>
+                <Button
+                    onClick={() => {
+                        const isConfirmed = confirm(
+                            translate('clearDataConfirmation')
+                        )
+
+                        if (isConfirmed) {
+                            localStorage.clear()
+                            window.location.reload()
+                        }
+                    }}
+                >
+                    {translate('clearData')}
+                </Button>
             </div>
         </div>
     )

@@ -13,10 +13,18 @@ export const TEXT = {
     },
     change: {
         ru: 'Сдача',
-        en: "Change",
+        en: 'Change',
     },
     takeLoan: {
         ru: 'Взять кредит',
         en: 'Take a loan',
+    },
+    clearData: {
+        ru: 'Очистить данные',
+        en: 'Clear data',
+    },
+    clearDataConfirmation: {
+        ru: 'Вы уверены, что хотите очистить данные?',
+        en: 'Are you sure you want to clear the data?',
     },
 }
